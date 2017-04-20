@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="todo-app">
+<head>
+    <meta charset="UTF-8">
+    <title>todo</title>
+    <link rel="stylesheet" href="vendor/bootstrap/dist/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="stylesheets/index.css"/>
+</head>
+
+<body ng-controller="homeCtrl as ctrl">
+<nav class="nav navbar-default navbar-fixed-top">
+    <div class="navbar-header">
+        <a class="navbar-brand" href="#">TO<span>DO</span></a>
+    </div>
+    <div class="options pull-right">
+        <a href="#" class="navbar-add " ng-click="ctrl.open()">New Todo</a>
+        <span class="dropdown">
+    <a  href="#" class="sidebar-sort dropdown-toggle" data-toggle="dropdown">Sort</a>
+            <ul class="dropdown-menu">
+                <li><a href="#" ng-click="ctrl.currentSort('date')">Date</a></li>
+                <li><a href="#" ng-click="ctrl.currentSort('_id')">Index</a></li>
+            </ul>
+        </span>
+    </div>
+</nav>
+
+
+
+<div class="tile-wrapper">
+    <div class="col-xs-4 col-sm-4 col-md-3 col-lg-3 todo-tile" ng-repeat="tile in ctrl.tiles.value | orderBy:ctrl.propertyName" ng-cloak>
+        <span class="glyphicon glyphicon-remove-sign pull-right" aria-hidden="true" ng-click="ctrl.delete(tile._id,$index)"></span>
+        <h4 class="heading field">{{tile.title | uppercase}}</h4>
+        <div class="description field">{{tile.description}}</div>
+        <div class="date field" ng-if="tile.date"><span class="glyphicon glyphicon-triangle-right" aria-hidden="true"></span> {{tile.date| date:'dd, MMMM'}}</div>
+    </div>
+</div>
+
+<!--template for add-todoo-->
+<script type="text/ng-template" id="addModal.html">
+    <div class="modal-header addModal">
+        <h3 class="modal-title" id="modal-title">Details</h3>
+    </div>
+    <form novalidate class="form">
+        <div class="modal-body addModal" id="modal-body ">
+            <span ng-if="empty" ng-class="{'empty':empty}" >Input all  fields...</span>
+            <p class="modal-date title" ng-model="description">Date</p>
+            <div class="row">
+                <div class="col-md-6">
+                    <p class="input-group">
+                        <input type="text" ng-init="todo.date=date()" ng-model="todo.date" class="form-control" class="date-picker" uib-datepicker-popup="dd-MMMM-yyyy" ng-model="dt" is-open="popup.opened" datepicker-options="dateOptions" ng-required="true" close-text="Close" alt-input-formats="altInputFormats" />
+                        <span class="input-group-btn">
+            <button type="button" class="btn btn-default" ng-click="open()"><i class="glyphicon glyphicon-calendar"></i></button>
+          </span>
+                    </p>
+                </div>
+            </div>
+            <p class="modal-heading title">Title</p>
+            <input type="text" class="col-xs-12" id="heading" name="heading" ng-model="todo.title" placeholder="title" required/>
+            <p class="description title">Description</p>
+            <textarea  name="description" id="textarea" placeholder="description..." rows="5" cols="70" ng-model="todo.description" required/>
+        </div>
+        <div class="modal-footer addModal">
+            <button class="btn btn-primary" type="submit" ng-click="ok(todo)">OK</button>
+            <button class="btn btn-primary" type="button" ng-click="cancel()">Cancel</button>
+        </div>
+    </form>
+</script>
+
+
+<!--dependencies-->
+<script src="vendor/jquery/dist/jquery.min.js"></script>
+<script src="vendor/angular/angular.js"></script>
+<script src="vendor/angular-ui-bootstrap/dist/ui-bootstrap-tpls.js"></script>
+<script src="vendor/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+
+<!--scripts-->
+<script src="app.js"></script>
+<script src="javascripts/Controller/HomeController.js"></script>
+<script src="javascripts/Services/CommonServices.js"></script>
+<script src="javascripts/Controller/ModalInstanceController.js"></script>
+</body>
+</html>

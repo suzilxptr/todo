@@ -1,0 +1,123 @@
+
+html,body {
+    padding-top: 24px;
+    background-color: #3b599b;
+}
+.navbar-brand{
+    font-weight: bolder;
+    color: white !important;
+    font-size:2em;
+}
+.navbar-header{
+    width:70%;
+}
+.navbar-brand span{
+    color: white;
+}
+.nav{
+    background-color: #3b599b;
+    margin-left: 10%;
+    margin-right: 10%;
+}
+
+.options{
+    height: 100%;
+    text-align:center;
+    margin-right:10px;
+    margin-top: 20px;
+}
+
+.options a{
+    text-decoration: none;
+    margin-left: 10px;
+    color:white;
+}
+
+.todo-tile{
+    margin: 4px;
+    background-color: #293e6a;
+    text-align: center;
+    min-height: 250px;
+    border-radius: 2px;
+    border-top-right-radius: 4px;
+    transition: 0.3s;
+}
+
+.todo-tile:hover{
+    box-shadow: 4px 4px 4px #293e6a;
+}
+.tile-wrapper{
+    margin-left:11%;
+    margin-top: 10px;
+}
+
+.field{
+    padding: 5px;
+}
+.description{
+    color: white;
+}
+
+.date{
+    color:#b6a754;
+    font-style: italic;
+    position: absolute;
+    bottom: 2px;
+    right: 0;
+
+}
+
+.glyphicon-remove-sign{
+    position:absolute;
+    top:0;
+    right:-2px;
+    font-size: 1.5em;
+    color:white;
+
+}
+.dropdown, .dropdown-menu, .dropdown-toggle {
+    background-color: #3b599b !important;
+    color: white;
+
+}
+a{
+    color: white !important;
+
+}
+.dropdown-menu a:hover{
+    background-color:#293e6a !important;
+}
+
+input, textarea{
+    padding: 10px;
+    color:black;
+}
+
+.heading{
+    color:#77ba9b;
+    font-weight: bold;
+}
+.addModal{
+    background-color: #3b599b;
+
+}
+
+.title,.modal-title{
+    color:white;
+}
+
+.empty{
+    position:absolute;
+    top:2px;
+    right:10px;
+    color:orangered;
+    font-weight: bolder;
+    font-style: italic;
+}
+
+[ng\:cloak], [ng-cloak], [data-ng-cloak], [x-ng-cloak], .ng-cloak, .x-ng-cloak {
+    display: none !important;
+}
+a:focus, .btn:focus{
+outline: none;
+}
