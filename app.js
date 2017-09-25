@@ -4,27 +4,21 @@ var favicon = require('serve-favicon');
 var logger = require('morgan');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-
 var index = require('./server/routes/index');
-
 var app = express();
 var mongoose=require('mongoose');
 
-
-
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.static(__dirname + '/public')); //return the public folder for browser to handle all routing
+app.use(express.static(__dirname + '/public'));  //return the public folder for browser to handle all routing
 
 app.use('/todo', index); //routing for all api calls
 
 mongoose.connect('mongodb://admin:root@ds147480.mlab.com:47480/todo-app'); //database connection
-// mongoose.connect('mongodb://localhost:27017/todo-app');
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

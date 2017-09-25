@@ -17,7 +17,7 @@ router.get('/',function(req,res,next){
 });
 
 //add todoo
-router.post('/add',function(req,res,next){
+router.post('/add',(req,res,next) => {
     todoModel.todoSchema.create({
         date:req.body.todo.date,
         description:req.body.todo.description,
@@ -34,7 +34,7 @@ router.post('/add',function(req,res,next){
 });
 
 //delete todoo
-router.post('/delete',function(req,res,next){
+router.post('/delete',(req,res,next) => {
     todoModel.todoSchema.remove({_id:req.body.id},function(err,obj){
         if(err){
             throw err;

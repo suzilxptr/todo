@@ -4,13 +4,10 @@
 
 angular.module('todo-app')
     .controller('homeCtrl',function($scope,$uibModal,$http,CommonService){
-        var vm=this;
-
-        vm.tiles= CommonService.get(); //todoo list
-        vm.propertyName='_id'; //default sort
-
-
-        vm.delete=function(id,$index){
+        var vm = this;
+        vm.tiles = CommonService.get(); //todoo list
+        vm.propertyName ='_id'; //default sort
+        vm.delete = (id,$index) => {
             CommonService.todoDelete(id);
             vm.tiles.value.splice($index,1);
         }
@@ -35,7 +32,7 @@ angular.module('todo-app')
             });
         }
 
-        vm.currentSort=function(propertyName){
+        vm.currentSort = (propertyName) => {
             vm.propertyName=propertyName;
         }
 
