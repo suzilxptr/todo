@@ -17,7 +17,7 @@ app.use(express.static(__dirname + '/public'));  //return the public folder for 
 
 app.use('/todo', index); //routing for all api calls
 
-mongoose.connect('mongodb://admin:root@ds147480.mlab.com:47480/todo-app'); //database connection
+mongoose.connect('mongodb://<username>:<password>@ds147480.mlab.com:<port>/todo-app'); //database connection
 
 
 // catch 404 and forward to error handler
